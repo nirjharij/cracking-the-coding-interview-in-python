@@ -66,10 +66,16 @@ class LinkedList:
 		print(temp.data)
 
 	def reverse(self):
-		while self.head:
-			temp = self.head
-			self.head = self.head.next
-			temp.next = None
+		print("inside reverse")
+		prev_node = None
+		while self.head.next:
+			next_node = self.head.next
+			self.head.next = prev_node
+			prev_node = self.head
+			self.head = next_node
+		
+		self.head.next = prev_node
+
 
 if __name__ == '__main__':
 	llist = LinkedList()
@@ -77,6 +83,5 @@ if __name__ == '__main__':
 	llist.push(5)
 	llist.push(7)
 	llist.push(1)
-	llist.delete(1)
+	llist.reverse()
 	llist.traverse()
-	llist.reverse_print()
