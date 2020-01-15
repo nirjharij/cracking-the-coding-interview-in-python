@@ -34,5 +34,3 @@ result = unique_char_with_ds(s4)
 result2 = unique_char_without_ds(s4)
 print("result with ds: {}".format(str(result)))
 print("result without ds: {}".format(str(result2)))
-
-
