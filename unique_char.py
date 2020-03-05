@@ -20,6 +20,9 @@ def unique_char_without_ds(s):
     return True
 
 
+def unique_char_using_bits(s):
+    pass
+
 # TC1 assuming only alphabets
 s1 = "ajabckajcaoichakcjakc"
 

@@ -3,6 +3,7 @@ class Node:
 		self.data = data
 		self.next = None
 
+
 class LinkedList:
 	def __init__(self):
 		self.head = None
@@ -43,22 +44,21 @@ class LinkedList:
 				self.head = temp.next
 				temp = None
 				return
-
+		prev_node = temp
 		while temp:
 			if temp.data == key:
 				break
 			prev_node = temp
 			temp = temp.next
 
-		if temp == None:
+		if temp is None:
 			return
 
 		prev_node.next = temp.next
-		temp = None
 
 	def reverse_print(self):
 		print("reverse_print")
-		if self.head == None:
+		if self.head is None:
 			return
 		temp = self.head
 		self.head = self.head.next
@@ -76,12 +76,46 @@ class LinkedList:
 		
 		self.head.next = prev_node
 
+	def remove_duplicates(self):
+		temp_dict = dict()
+		temp = self.head
+		prev_node = temp
+		while temp:
+			if temp.data in temp_dict:
+				prev_node.next = temp.next
+				temp = temp.next
+			else:
+				temp_dict[temp.data] = 1
+				prev_node = temp
+				temp = temp.next
+
+	def remove_duplicates_without_buffer(self):
+		p1_ptr = self.head
+		p2_ptr = self.head.next
+		while p1_ptr:
+			data = p1_ptr.data
+			prev_node = p1_ptr
+			while p2_ptr:
+				if p2_ptr.data == data:
+					prev_node.next = p2_ptr.next
+				else:
+					prev_node = p2_ptr
+				p2_ptr = p2_ptr.next
+			p1_ptr = p1_ptr.next
+			if p1_ptr:
+				p2_ptr = p1_ptr.next
+			else:
+				break
+
 
 if __name__ == '__main__':
 	llist = LinkedList()
-	llist.push(3)
-	llist.push(5)
+	llist.push(4)
 	llist.push(7)
 	llist.push(1)
-	llist.reverse()
+	llist.push(2)
+	llist.push(2)
+	llist.push(7)
+	# llist.reverse()
+	llist.remove_duplicates_without_buffer()
 	llist.traverse()
