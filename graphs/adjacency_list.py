@@ -27,6 +27,32 @@ class Graph:
                 temp = temp.next
             print(" \n")
 
+    def dfs(self, v):
+        visited = [False] * self.vertices
+        self.dfs_util(v, visited)
+
+    def dfs_util(self, v, visited):
+        visited[v] = True
+        print(v, end= ' ')
+        for i in self.graph[v]:
+            if visited[i] == False:
+                self.dfs_util(i, visited)
+
+    def bfs(self, num):
+        visited = [False] * self.vertices
+
+        queue = list()
+        queue.append(num)
+        visited[num] = True
+
+        while queue:
+            item = queue.pop(0)
+            print(item)
+            for i in self.graph[item]:
+                if visited[i] == False:
+                    queue.append(i)
+                    visited[i] = True
+
 
 if __name__ == "__main__":
     V = 5

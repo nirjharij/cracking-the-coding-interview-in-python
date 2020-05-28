@@ -27,19 +27,49 @@ class Trie:
             if not node.children[index]:
                 return False
             node = node.children[index]
-        return node!=None and node.is_end_of_word
+        return node
+
+    # def get_all_prefix(self, node, word, search_word):
+    #     # import pdb; pdb.set_trace()
+    #     if node.is_end_of_word:
+    #         return word
+    #
+    #     for i in range(0, 26):
+    #         if node.children[i]:
+    #             word += chr(i + ord('a'))
+    #             word_found = self.get_all_prefix(node.children[i], word, search_word)
+    #             if word_found:
+    #                 print(word_found)
+    #         # word = search_word
+
+    def traverse(self, node, word=['']*20, level=0, search_word=''):
+        if node.is_end_of_word:
+            if search_word:
+                print(search_word, end='')
+            for i in range(level):
+                print(word[i], end='')
+            print('')
+
+        for i in range(0, 26):
+            if node.children[i]:
+                word[level] = chr(i + ord('a'))
+                self.traverse(node.children[i], word=word, level=level+1, search_word=search_word)
+            # word = ''
 
 
 if __name__ == '__main__':
-    keys = ["the", "a", "there", "anaswe", "any",
-            "by", "their"]
+    keys = ["mobile", "mouse", "moneypot", "monitor", "mousepad"]
     t = Trie()
     for key in keys:
         t.insert(key)
     output = ["Not present in trie",
               "Present in trie"]
 
-    print("{} ---- {}".format("the", output[t.search("the")]))
-    print("{} ---- {}".format("these", output[t.search("these")]))
-    print("{} ---- {}".format("their", output[t.search("their")]))
-    print("{} ---- {}".format("thaw", output[t.search("thaw")]))
+    # print("{} ---- {}".format("m", output[t.search("m")]))
+    # print("{} ---- {}".format("mo", output[t.search("mo")]))
+    # print("{} ---- {}".format("mou", output[t.search("mou")]))
+    # print("{} ---- {}".format("mouse", output[t.search("mouse")]))
+    node = t.search("mou")
+    if node:
+        t.traverse(node, search_word="mou")
+    # t.traverse(t.root)

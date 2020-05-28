@@ -11,7 +11,7 @@ class LinkedList:
 	def traverse(self):
 		temp = self.head
 		while temp:
-			print(temp.data)
+			print(temp.data, end=" -> ")
 			temp = temp.next
 
 	def push(self, new_data):
@@ -19,6 +19,14 @@ class LinkedList:
 		new_node = Node(new_data)
 		new_node.next = self.head
 		self.head = new_node
+
+	def pop(self):
+		if self.head:
+			temp = self.head
+			self.head = self.head.next
+			return temp
+		else:
+			return None
 
 	def insertafter(self, prev_node, new_data):
 		new_node = Node(new_data)
