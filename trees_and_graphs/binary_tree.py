@@ -4,6 +4,7 @@ class Node:
         self.left_child = None
         self.right_child = None
         self.parent = None
+        self.size = 1
 
 
 class BinarySearchTree:
@@ -91,6 +92,9 @@ class BinarySearchTree:
             min = node.left_child.data
             node = node.left_child
         return min
+
+    def generate_random_node(self):
+        pass
 
 
 if __name__ == "__main__":

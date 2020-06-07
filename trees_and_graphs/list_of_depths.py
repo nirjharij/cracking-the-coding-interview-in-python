@@ -1,7 +1,7 @@
 import sys
 sys.path.append('..')
 from binary_tree import BinarySearchTree
-from linked_list.linked_list import LinkedList
+from linked_list.linked_list_operations import LinkedList
 
 
 class ListDepth:

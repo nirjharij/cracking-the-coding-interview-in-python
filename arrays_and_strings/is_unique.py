@@ -21,7 +21,13 @@ def unique_char_without_ds(s):
 
 
 def unique_char_using_bits(s):
-    pass
+    unique = 0
+    for chr in s:
+        val = ord(chr) - ord('a')
+        if (unique & (1 << val)) > 0:
+            return False
+        unique = unique or (1 << val)
+    return True
 
 # TC1 assuming only alphabets
 s1 = "ajabckajcaoichakcjakc"
@@ -33,7 +39,9 @@ s3 = "abcdefghijklmnopqrstuvwxyz"
 
 s4 = "abcdefghijklmnopqrstuvwxyz ("
 
-result = unique_char_with_ds(s4)
-result2 = unique_char_without_ds(s4)
+result = unique_char_with_ds(s3)
+result2 = unique_char_without_ds(s3)
+result3 = unique_char_using_bits(s3)
 print("result with ds: {}".format(str(result)))
 print("result without ds: {}".format(str(result2)))
+print("result using bits: {}".format(str(result3)))
