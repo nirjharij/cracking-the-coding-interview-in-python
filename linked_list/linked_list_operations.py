@@ -7,6 +7,7 @@ class Node:
 class LinkedList:
 	def __init__(self):
 		self.head = None
+		self.tail = None
 
 	def traverse(self):
 		temp = self.head
@@ -18,6 +19,8 @@ class LinkedList:
 		print("New data:{}".format(str(new_data)))
 		new_node = Node(new_data)
 		new_node.next = self.head
+		if self.head is None:
+			self.tail = new_node
 		self.head = new_node
 
 	def pop(self):
@@ -37,12 +40,14 @@ class LinkedList:
 		new_node = Node(new_data)
 		if self.head is None:
 			self.head = new_node
+			self.tail = new_node
 			return	
 		last = self.head
 		while (last.next):
 			last = last.next
 
 		last.next = new_node
+		self.tail = new_node
 
 	def delete(self, key):
 		print("deleting data: {}".format(str(key)))
