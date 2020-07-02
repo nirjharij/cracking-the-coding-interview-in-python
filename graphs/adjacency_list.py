@@ -33,7 +33,7 @@ class Graph:
 
     def dfs_util(self, v, visited):
         visited[v] = True
-        print(v, end= ' ')
+        print(v, end=' ')
         for i in self.graph[v]:
             if visited[i] == False:
                 self.dfs_util(i, visited)
