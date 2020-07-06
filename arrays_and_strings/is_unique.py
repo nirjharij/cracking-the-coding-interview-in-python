@@ -29,6 +29,7 @@ def unique_char_using_bits(s):
         unique = unique or (1 << val)
     return True
 
+
 # TC1 assuming only alphabets
 s1 = "ajabckajcaoichakcjakc"
 
