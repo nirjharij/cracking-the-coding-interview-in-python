@@ -8,11 +8,12 @@ def one_edit_away(str1, str2):
     else:
         return False
 
+
 def one_insert_away(str1, str2):
     found_diff = False
     i = 0
     j = 0
-    if i < len(str1) and j < len(str2):
+    while i < len(str1) and j < len(str2):
         if str1[i] != str2[j]:
             if found_diff:
                 return False
@@ -22,6 +23,7 @@ def one_insert_away(str1, str2):
             i += 1
             j += 1
     return True
+
 
 def one_replace_away(str1, str2):
     found_diff = False
