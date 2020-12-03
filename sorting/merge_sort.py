@@ -1,3 +1,6 @@
+# Time complexity: nlogn
+
+
 def merge_sort(arr):
     if len(arr) > 1:
 
@@ -36,5 +39,6 @@ def merge_sort(arr):
             k += 1
 
     print(arr)
+
 
 merge_sort([12, 11, 13, 5, 6, 7])

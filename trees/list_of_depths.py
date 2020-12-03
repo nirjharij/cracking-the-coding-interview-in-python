@@ -1,3 +1,6 @@
+# Given binary tree create a linked list of all nodes at each depth. If you have D depth tree then D linked lists
+
+
 import sys
 sys.path.append('..')
 from binary_tree import BinarySearchTree

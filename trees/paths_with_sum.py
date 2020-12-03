@@ -44,4 +44,3 @@ def count_paths_with_sum(root, target, running_sum, sum_dict):
     if running_sum in sum_dict:
         sum_dict[running_sum] -= 1
     return total_paths
-

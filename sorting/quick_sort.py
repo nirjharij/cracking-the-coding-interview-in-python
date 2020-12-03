@@ -18,5 +18,5 @@ def quick_sort(arr, low, high):
         quick_sort(arr, partition_index+1, high)
     print(arr)
 
-quick_sort([10, 7, 8, 9, 1, 5], 0, 5)
 
+quick_sort([10, 7, 8, 9, 1, 5], 0, 5)

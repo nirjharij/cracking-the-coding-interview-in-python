@@ -16,7 +16,7 @@ class LinkedList:
 			temp = temp.next
 
 	def push(self, new_data):
-		print("New data:{}".format(str(new_data)))
+		# print("New data:{}".format(str(new_data)))
 		new_node = Node(new_data)
 		new_node.next = self.head
 		if self.head is None:
@@ -120,15 +120,41 @@ class LinkedList:
 			else:
 				break
 
+	def reverse_list(self, node, prev_node):
+		if node is None:
+			self.head = prev_node
+			return
+		self.reverse_list(node.next, node)
+		node.next = prev_node
+
+	def add_one(self, node):
+		if not node:
+			return 1
+
+		val = self.add_one(node.next)
+		val += node.data
+
+		carry = val // 10
+		node.data = val % 10
+
+		return carry
+
 
 if __name__ == '__main__':
 	llist = LinkedList()
-	llist.push(4)
-	llist.push(7)
-	llist.push(1)
-	llist.push(2)
-	llist.push(2)
-	llist.push(7)
+	llist.push(9)
+	# llist.push(7)
+	llist.push(9)
+	llist.push(9)
+	# llist.push(2)
+	llist.push(9)
 	# llist.reverse()
-	llist.remove_duplicates_without_buffer()
+	# llist.remove_duplicates_without_buffer()
+	# llist.traverse()
+	# llist.reverse_list(llist.head, None)
+	# llist.traverse()
+	carry = llist.add_one(llist.head)
+	if carry:
+		llist.push(carry)
 	llist.traverse()
+

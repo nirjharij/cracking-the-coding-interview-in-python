@@ -7,7 +7,7 @@ def detect_loop(llist):
         return None
     slow_ptr = llist
     fast_ptr = llist
-    while fast_ptr.next and fast_ptr:
+    while fast_ptr and fast_ptr.next:
         slow_ptr = slow_ptr.next
         fast_ptr = fast_ptr.next.next
         if slow_ptr is fast_ptr:

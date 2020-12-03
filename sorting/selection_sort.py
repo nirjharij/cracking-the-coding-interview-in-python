@@ -1,4 +1,3 @@
-# Implements Selection Sort
 # The good thing about selection sort is it never makes more than O(n) swaps and
 # can be useful when memory write is a costly operation.
 

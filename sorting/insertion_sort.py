@@ -1,4 +1,5 @@
 # Insertion sort is a simple sorting algorithm that works the way we sort playing cards in our hands.
+# Best case O(n). Worst Case: O(n^2)
 
 
 def insertion_sort(data):

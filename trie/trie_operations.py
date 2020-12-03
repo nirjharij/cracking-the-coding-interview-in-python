@@ -7,9 +7,13 @@ class TrieNode:
 class Trie:
     def __init__(self):
         self.root = TrieNode()
+        self.word_list = []
 
     def char_to_index(self, ch):
         return ord(ch) - ord('a')
+
+    def index_to_char(self, index):
+        return chr(index + ord('a'))
 
     def insert(self, key):
         node = self.root
@@ -29,32 +33,28 @@ class Trie:
             node = node.children[index]
         return node
 
-    # def get_all_prefix(self, node, word, search_word):
-    #     # import pdb; pdb.set_trace()
+    # def traverse(self, node, word=['']*20, level=0, search_word=''):
     #     if node.is_end_of_word:
-    #         return word
+    #         if search_word:
+    #             print(search_word, end='')
+    #         for i in range(level):
+    #             print(word[i], end='')
+    #         print('')
     #
     #     for i in range(0, 26):
     #         if node.children[i]:
-    #             word += chr(i + ord('a'))
-    #             word_found = self.get_all_prefix(node.children[i], word, search_word)
-    #             if word_found:
-    #                 print(word_found)
-    #         # word = search_word
-
-    def traverse(self, node, word=['']*20, level=0, search_word=''):
+    #             word[level] = chr(i + ord('a'))
+    #             self.traverse(node.children[i], word=word, level=level+1, search_word=search_word)
+    #         # word = ''
+            
+    def suggestions(self, node, word):
         if node.is_end_of_word:
-            if search_word:
-                print(search_word, end='')
-            for i in range(level):
-                print(word[i], end='')
-            print('')
+            self.word_list.append(word)
 
         for i in range(0, 26):
             if node.children[i]:
-                word[level] = chr(i + ord('a'))
-                self.traverse(node.children[i], word=word, level=level+1, search_word=search_word)
-            # word = ''
+                letter = self.index_to_char(i)
+                self.suggestions(node.children[i], word+letter)
 
 
 if __name__ == '__main__':
@@ -69,7 +69,9 @@ if __name__ == '__main__':
     # print("{} ---- {}".format("mo", output[t.search("mo")]))
     # print("{} ---- {}".format("mou", output[t.search("mou")]))
     # print("{} ---- {}".format("mouse", output[t.search("mouse")]))
-    node = t.search("mou")
+    node = t.search("mon")
     if node:
-        t.traverse(node, search_word="mou")
+        # t.traverse(node, search_word="mou")
+        t.suggestions(node, "mon")
+    print(t.word_list)
     # t.traverse(t.root)

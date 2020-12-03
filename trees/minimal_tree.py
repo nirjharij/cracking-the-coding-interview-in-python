@@ -1,3 +1,6 @@
+# Given sorted array create a bst with minimal height
+
+
 from binary_tree import BinarySearchTree
 
 
